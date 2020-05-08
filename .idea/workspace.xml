@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e7150aa7-c88f-4f3e-85b0-fb4255c44c44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/controllers/QuestionController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/QuestionController.js" afterDir="false" />
-    </list>
+    <list default="true" id="e7150aa7-c88f-4f3e-85b0-fb4255c44c44" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588928339839</updated>
-      <workItem from="1588928391410" duration="6345000" />
+      <workItem from="1588928391410" duration="6617000" />
     </task>
     <servers />
   </component>

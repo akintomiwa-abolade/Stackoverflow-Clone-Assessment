@@ -5,6 +5,9 @@ const secret = process.env.SECRET;
 
 class UserController{
 
+    /**
+     * Register new user
+     */
     static registerUser(req, res){
         try{
             let { name, email, password, fcm_token} = req.body;
@@ -42,6 +45,9 @@ class UserController{
         }
     }
 
+    /**
+     * User login
+     */
     static userLogin(req, res){
         try{
             let { email, password } = req.body;
@@ -99,6 +105,9 @@ class UserController{
         }
     }
 
+    /**
+     * Fetch all users
+     */
     static fetchUsers(req, res){
         try{
             User.find()
@@ -110,6 +119,9 @@ class UserController{
         }
     }
 
+    /**
+     * Fetch single user by id
+     */
     static fetchSingleUser(req, res){
         try{
             User.findOne({_id: req.params.userId})
@@ -122,6 +134,9 @@ class UserController{
         }
     }
 
+    /**
+     * Search for user
+     */
     static searchExistingUser(req, res){
         try{
             let { search } = req.body;
