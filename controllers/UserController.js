@@ -36,7 +36,6 @@ class UserController{
             }).then(result=>{
                 if(result.length > 0){
                     return res.status(403).json({
-                        error:true,
                         message: 'User with this Email already exist'});
                 }else{
                     User.create(newUser)
