@@ -31,7 +31,7 @@ router.get('/answers/question/:questionId', function(req, res){
 
 // get all question answered by loggedin user
 router.get('/answers/user', authenticate, function(req, res){
-	  Answer.find({ user: req.user._id })
+  Answer.find({ user: req.user._id })
     .populate('user')
     .populate('question')
     .then(answers => {
