@@ -39,6 +39,6 @@ answerSchema.pre('save', function (next) {
   next()
 })
 
-let Answer = mongoose.model('Answer', answerSchema)
+let Answer = mongoose.model('Answer', answerSchema);
 
-module.exports = Answer
+module.exports = Answer;
