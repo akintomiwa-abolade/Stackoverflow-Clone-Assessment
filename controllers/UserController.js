@@ -75,7 +75,7 @@ class UserController{
                         if (!passwordIsValid) {
                             return res.status(401).json({
                                 error: true,
-                                message: 'Email and password is incorrect'
+                                message: 'Email and password is incorrect.'
                             });
                         } else {
 
