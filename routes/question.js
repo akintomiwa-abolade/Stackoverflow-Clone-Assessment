@@ -15,7 +15,7 @@ const QuestionController = require('../controllers/QuestionController');
 // view all question
 router.get('/questions', QuestionController.fetchQuestions);
 // ask question
-router.post('/questions', authenticate, QuestionController.fetchQuestions);
+router.post('/questions', authenticate, QuestionController.askQuestion());
 // view all user questions
 router.get('/questions/user', authenticate, QuestionController.fetchUsersQuestions);
 // get single question
