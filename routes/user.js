@@ -6,11 +6,7 @@
 
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { authenticate, authorize } = require('../middlewares/auth');
 require('dotenv').config();
-const secret = process.env.SECRET;
 const UserController = require('../controllers/UserController');
 
 // register user
