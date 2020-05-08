@@ -3,6 +3,9 @@ const notificationServer = require('../middlewares/notificationServer');
 let { Answer, Question } = require('../database/models');
 
 class AnswerController {
+    /**
+     * fetch question answers
+     */
     static fetchSpecificQuestionAnswer(req, res){
         try{
             Answer.find({ question: req.params.questionId })
@@ -18,6 +21,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * fetch user question answered
+     */
     static fetchAnswersByUser(req, res){
         try{
             Answer.find({ user: req.user._id })
@@ -32,6 +38,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * Answer question
+     */
     static answerQuestion(req, res){
         try{
             let { title, description, question } = req.body;
@@ -78,6 +87,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * Fetch single answer by id
+     */
     static fetchAnswer(req, res){
         try{
             Answer.findOne({ _id: req.params.answerId })
@@ -92,6 +104,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * Upvote answer
+     */
     static upVoteAnswer(req, res){
         try{
             Answer.findOne({ upvotes: req.user._id, _id: req.params.answerId })
@@ -114,6 +129,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * Downvote answer
+     */
     static downVoteAnswer(req, res){
         try{
             Answer.findOne({ downvotes: req.user._id, _id: req.params.answerId })
@@ -136,6 +154,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * Search for answers
+     */
     static searchAnswer(req, res){
         try{
             let { search } = req.body;
@@ -160,6 +181,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * Update answer
+     */
     static updateAnswer(req, res){
         try{
             // validate entry
@@ -186,6 +210,9 @@ class AnswerController {
         }
     }
 
+    /**
+     * Delete answer
+     */
     static deleteAnswer(req, res){
         try{
             Answer.findOneAndDelete({ _id: req.params.answerId })
