@@ -62,6 +62,7 @@ let userSchema = new mongoose.Schema({
   }
 })
 
+
 let User = mongoose.model('User', userSchema)
 
 User.schema.path('email').validate(function (input) {
