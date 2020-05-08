@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 let userSchema = new mongoose.Schema({
   name: {
@@ -55,4 +55,4 @@ User.schema.path('email').validate(function (input) {
     .catch(err => {console.log(err)})
 }, 'Email has been used.')
 
-module.exports = User
+module.exports = User;
