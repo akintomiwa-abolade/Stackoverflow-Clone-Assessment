@@ -11,9 +11,7 @@ const jwt = require('jsonwebtoken');
 const { authenticate, authorize } = require('../middlewares/auth');
 require('dotenv').config();
 const secret = process.env.SECRET;
-
-// Bring in User model
-let { User } = require('../database/models');
+const UserController = require('../controllers/UserController');
 
 // register user
 router.post('/users/register', function(req, res){
