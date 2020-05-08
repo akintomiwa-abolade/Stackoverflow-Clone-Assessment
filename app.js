@@ -5,6 +5,8 @@ const error = require('./middlewares/error');
 const expressValidator = require('express-validator');
 const http = require('http');
 const helmet = require('helmet');
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 
@@ -49,11 +51,42 @@ app.use(expressValidator({
 	}
 }));
 
+const swaggerDefinition = {
+	info: {
+		title: 'StackOverflow Clone',
+		version: '1.0.0',
+		description: 'Endpoints to test business logic routes',
+	},
+	host: 'localhost:5000',
+	basePath: '/api/v1',
+	securityDefinitions: {
+		bearerAuth: {
+			type: 'apiKey',
+			name: 'Authorization',
+			scheme: 'bearer',
+			in: 'header',
+		},
+	},
+};
+
+const options = {
+	swaggerDefinition,
+	apis: ['./routes/*.js'],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+
+app.get('/swagger.json', (req, res) => {
+	res.setHeader('Content-Type', 'application/json');
+	res.send(swaggerSpec);
+});
+
 // api routes
 let user = require('./routes/user');
 let answer = require('./routes/answer');
 let question = require('./routes/question');
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/v1', user, answer, question);
 
 app.use(error);
