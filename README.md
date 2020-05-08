@@ -22,7 +22,7 @@ It has basic functionalities like
 
 ## Documentation Using Open API
 
-  http://localhost:4000/api-docs/
+  http://localhost:5000/api-docs/
 
 ## Environment Variables
 

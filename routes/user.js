@@ -9,14 +9,50 @@ const router = express.Router();
 require('dotenv').config();
 const UserController = require('../controllers/UserController');
 
-// register users
+/**
+ * @swagger
+ * /users/register:
+ *   post:
+ *     tags:
+ *       - Users
+ *     name: Register
+ *     summary: Register a new user
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         in: body
+ *         schema:
+ *           $ref: '#/definitions/User'
+ *           type: object
+ *           properties:
+ *             name:
+ *               type: string
+ *             email:
+ *               type: string
+ *             password:
+ *               type: string
+ *               format: password
+ *             fcm_token:
+ *               type: string
+ *         required:
+ *           - name
+ *           - email
+ *           - password
+ *           - fcm_token
+ *     responses:
+ *       '201':
+ *         description: Registration Successful
+ */
 router.post('/users/register', UserController.registerUser);
 /**
  * @swagger
  * /users/login:
  *   post:
  *     tags:
- *       - User
+ *       - Users
  *     name: Login
  *     summary: Logs in a user
  *     produces:
