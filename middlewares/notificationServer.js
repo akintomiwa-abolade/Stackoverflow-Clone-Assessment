@@ -7,8 +7,6 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
 
-
-
 class NotificationServer{
 
     static  sendPushToUser(topic, message){
