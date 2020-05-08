@@ -6,6 +6,9 @@ let { Question, Answer} = require('../database/models');
 
 class QuestionController {
 
+    /**
+     * Fetch all questions
+     */
     static fetchQuestions(req, res){
         try{
             Question.find()
@@ -22,6 +25,9 @@ class QuestionController {
         }
     }
 
+    /**
+     * Ask new question
+     */
     static askQuestion(req, res){
         try{
             let { title, description } = req.body;
@@ -56,6 +62,9 @@ class QuestionController {
         }
     }
 
+    /**
+     * Fetch list of questions asked by logged in user
+     */
     static fetchUsersQuestions(req, res){
         try{
             Question.find({ user: req.user._id })
@@ -71,6 +80,9 @@ class QuestionController {
         }
     }
 
+    /**
+     * Fetch single question by id
+     */
     static fetchSingleQuestion(req, res){
         try{
             Question.findOne({_id: req.params.questionId})
@@ -87,6 +99,9 @@ class QuestionController {
         }
     }
 
+    /**
+     * Subscribe to question
+     */
     static async userSubscribeToQuestion(req, res){
         try{
             let subscribe = await notificationServer.subscribeToQuestion(`${req.user.fcm_token}`,`/topics/question_subscribe_${req.body.questionId}`);
@@ -103,6 +118,9 @@ class QuestionController {
         });
     }
 
+    /**
+     * Upvote question
+     */
     static upVoteQuestion(req, res){
         try{
             Question.findOne({ upvotes: req.user._id, _id:req.params.questionId })
@@ -125,6 +143,9 @@ class QuestionController {
         }
     }
 
+    /**
+     * Downvote question
+     */
     static downVoteQuestion(req, res){
         try{
             Question.findOne({ downvotes: req.user._id, _id:req.params.questionId })
@@ -147,6 +168,9 @@ class QuestionController {
         }
     }
 
+    /**
+     * Update question
+     */
     static updateQuestion(req, res){
         try{
             // validate entry
@@ -171,24 +195,9 @@ class QuestionController {
         }
     }
 
-    static deleteQuestion(req, res){
-        try{
-            Answer.deleteMany({ question: req.params.questionId })
-                .then(result => {
-                    return Question.findOneAndDelete({_id: req.params.questionId})
-                })
-                .then(question => {
-                    const response = {
-                        message: 'Successfully deleted question.'
-                    }
-                    res.status(200).json(response)
-                })
-                .catch(err => { res.status(500).json({message: err.message }); })
-        }catch(e){
-            res.status(500).json({message: e.message});
-        }
-    }
-
+    /**
+     * search question
+     */
     static searchQuestion(req, res){
         try{
             let { search } = req.body;
@@ -213,5 +222,28 @@ class QuestionController {
             res.status(500).json({message: e.message});
         }
     }
+
+    /**
+     * Delete question
+     */
+    static deleteQuestion(req, res){
+        try{
+            Answer.deleteMany({ question: req.params.questionId })
+                .then(result => {
+                    return Question.findOneAndDelete({_id: req.params.questionId})
+                })
+                .then(question => {
+                    const response = {
+                        message: 'Successfully deleted question.'
+                    }
+                    res.status(200).json(response)
+                })
+                .catch(err => { res.status(500).json({message: err.message }); })
+        }catch(e){
+            res.status(500).json({message: e.message});
+        }
+    }
+
+
 }
 module.exports = QuestionController
