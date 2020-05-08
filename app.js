@@ -53,9 +53,9 @@ app.use(expressValidator({
 
 const swaggerDefinition = {
 	info: {
-		title: 'StackOverflow Clone',
+		title: 'Mini StackOverflow',
 		version: '1.0.0',
-		description: 'Endpoints to test business logic routes',
+		description: 'Endpoints to test StackOverflow clone business logic routes',
 	},
 	host: 'localhost:5000',
 	basePath: '/api/v1',
