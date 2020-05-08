@@ -1,5 +1,26 @@
 const mongoose = require('mongoose');
-
+/**
+ * @swagger
+ * definitions:
+ * User:
+ * type: object
+ * properties:
+ * _id:
+ * type:objectid
+ * name:
+ * type:string
+ * email:
+ * type:string
+ * password:
+ * type:string
+ * fcm_token:
+ * type:string
+ * required:
+ * - name
+ * - email
+ * - password
+ * - fcm_token
+ */
 let userSchema = new mongoose.Schema({
   name: {
     type: String,

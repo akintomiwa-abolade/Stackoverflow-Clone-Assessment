@@ -1,5 +1,28 @@
 const mongoose = require('mongoose')
-
+/**
+ * @swagger
+ * definitions:
+ * Answer:
+ * type: object
+ * properties:
+ * _id:
+ * type:objectid
+ * title:
+ * type:string
+ * description:
+ * type:string
+ * upvotes:
+ * type:objectid
+ * downvotes:
+ * type:objectid
+ * totalVotes:
+ * type:integer
+ * createdAt:
+ * type:date
+ * required:
+ * - title
+ * - description
+ */
 let answerSchema = new mongoose.Schema({
   title: {
     type: String,
