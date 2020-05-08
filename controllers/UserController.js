@@ -61,20 +61,21 @@ class UserController{
             if(errors){
                 return res.status(200).json({
                     error:true,
-                    message:errors
+                    message:errors,
+
                 });
             }
 
             User.findOne({ email: email })
                 .then(user => {
                     if (!user) {
-                        res.status(401).json({error:true,message: "sorry no user found"});
+                        res.status(401).json({error:true,message: "Sorry no user found"});
                     } else {
                         var passwordIsValid = bcrypt.compareSync(password, user.password);
                         if (!passwordIsValid) {
                             return res.status(401).json({
                                 error: true,
-                                message: 'Authentication failed.'
+                                message: 'Email and password is incorrect'
                             });
                         } else {
 
@@ -93,7 +94,8 @@ class UserController{
                             return res.status(200).json({
                                 token,
                                 email,
-                                name: user.name
+                                name: user.name,
+                                message: 'User found and logged in successfully'
                             });
                         }
                     }
