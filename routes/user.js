@@ -78,9 +78,9 @@ router.post('/users/register', UserController.registerUser);
  *       '200':
  *         description: User found and logged in successfully
  *       '401':
- *         description: Sorry no user with such Email found
- *       '403':
  *         description: Email and password is incorrect
+ *       '403':
+ *         description: Sorry no user with such Email found
  */
 router.post('/users/login', UserController.userLogin);
 // fetch all users

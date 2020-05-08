@@ -70,7 +70,7 @@ class UserController{
             User.findOne({ email: email })
                 .then(user => {
                     if (!user) {
-                        res.status(401).json({error:true,message: "Sorry no user found"});
+                        res.status(403).json({error:true,message: "Sorry no user with such Email found"});
                     } else {
                         var passwordIsValid = bcrypt.compareSync(password, user.password);
                         if (!passwordIsValid) {
