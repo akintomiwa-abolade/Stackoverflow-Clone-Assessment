@@ -1,5 +1,5 @@
 let { User } = require('../database/models');
-
+const bcrypt = require('bcryptjs');
 require('dotenv').config();
 const secret = process.env.SECRET;
 

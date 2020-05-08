@@ -1,8 +1,6 @@
 const cors = require('cors');
 const express = require('express');
-const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const config = require('./database/config');
 const error = require('./middlewares/error');
 const expressValidator = require('express-validator');
 const http = require('http');
@@ -19,7 +17,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // connect to database
-mongoose.connect(process.env.MONGOLAB_URI || config.database, {useNewUrlParser:true,  useUnifiedTopology: true, useFindAndModify:false});
+mongoose.connect(process.env.MONGOLAB_URI, {useNewUrlParser:true,  useUnifiedTopology: true, useFindAndModify:false});
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 

@@ -1,6 +1,18 @@
-# HacktivOverflow
+# StackOverflow Clone Assessement
 
 Mini StackOverflow
+
+This project is a simple clone of stackoverflow developed using NodeJS and MongoDB. 
+It has basic functionalities like
+- User signup
+- User sign in (using JWT)
+- Ask Question
+- Upvote or downvote question
+- Answer Question
+- Search (Questions, Answers and Users)
+- User subscribe to Question (Get notification when question is answered) using Firebase
+- Unit testing
+
 
 ## Dependencies
 
@@ -8,14 +20,18 @@ Mini StackOverflow
 * [MongoDB](https://www.mongodb.com/download-center/community)
 * [MongoDb Compass](https://docs.mongodb.com/compass/current/install/)
 
-## Environtment Variables
+## Documentation Using Open API
+
+  http://localhost:4000/api-docs/
+
+## Environment Variables
 
 ```
 SECRET=    (**For JWT SECRET**)
 MONGOLAB_URI=  (**For MonogoDB Connection**)
 ```
 
-## Project Setup
+## Running the app
 
 ```
 $ npm install
