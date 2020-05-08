@@ -53,6 +53,6 @@ let user = require('../routes/user');
 let answer = require('../routes/answer');
 let question = require('../routes/question');
 
-app.use('', user, answer, question);
+app.use('/api/v1', user, answer, question);
 
 module.exports = app;
