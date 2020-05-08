@@ -45,6 +45,8 @@ const UserController = require('../controllers/UserController');
  *     responses:
  *       '201':
  *         description: Registration Successful
+ *       '403':
+ *         description: User with this Email already exist
  */
 router.post('/users/register', UserController.registerUser);
 /**

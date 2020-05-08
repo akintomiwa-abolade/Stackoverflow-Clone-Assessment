@@ -32,15 +32,24 @@ class UserController{
             let newUser = {
                 name, email, password: hashedPassword, fcm_token
             }
+            User.find({email:email
+            }).then(result=>{
+                if(result.length > 0){
+                    return res.status(403).json({
+                        error:true,
+                        message: 'User with this Email already exist'});
+                }else{
+                    User.create(newUser)
+                        .then(data => {
+                            return res.status(201).json({
+                                error:false,
+                                data: data,
+                                message: 'Registration Successful'});
+                        })
+                        .catch(err => { return res.status(500).json({message: err.message}); })
+                }
+            })
 
-            User.create(newUser)
-                .then(data => {
-                    return res.status(201).json({
-                        error:false,
-                        data: data,
-                        message: 'Registration Successful'});
-                })
-                .catch(err => { return res.status(500).json({message: err.message}); })
         }catch(e){
             return res.status(500).json({message:e.message});
         }
