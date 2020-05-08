@@ -10,26 +10,14 @@ const bcrypt = require('bcryptjs');
 const { authenticate, authorize } = require('../middlewares/auth');
 const notificationServer = require('../middlewares/notificationServer');
 
-// Bring in Question model
-let { Question, Answer} = require('../database/models');
+const QuestionController = require('../controllers/QuestionController');
 
 // view all question
-router.get('/questions', function(req, res){
-	 Question.find()
-      .populate('upvotes', 'name')
-      .populate('downvotes', 'name')
-      .populate('user', 'name')
-      .sort({ createdAt: 'desc'})
-      .then(questions => {
-        res.status(200).json(questions)
-      })
-      .catch(err => { req.status(500).json({message:er.message});})
-});
+router.get('/questions', QuestionController.fetchQuestions);
 
 // ask question
 router.post('/questions', authenticate, function(req, res){
   try{
-
   	let { title, description } = req.body;
 
     // validate entry
