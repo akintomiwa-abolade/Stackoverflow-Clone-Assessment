@@ -33,7 +33,6 @@ let answerSchema = new mongoose.Schema({
     type: Date
   }
 })
-
 answerSchema.pre('save', function (next) {
   this.totalVote = this.upvotes.length - this.downvotes.length
   next()
