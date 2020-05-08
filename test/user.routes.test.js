@@ -1,4 +1,3 @@
-
 const request = require('supertest');
 const app = require('../test_server');
 let rndNum = Math.floor(10000 + Math.random() * 900000);

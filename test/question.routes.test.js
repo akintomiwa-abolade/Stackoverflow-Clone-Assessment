@@ -1,7 +1,5 @@
-
 const request = require('supertest');
 const app = require('../test_server');
-
 
 /*
   declare the token and questionId variable in a scope accessible
