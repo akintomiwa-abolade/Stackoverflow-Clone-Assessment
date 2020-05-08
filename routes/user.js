@@ -9,9 +9,9 @@ const router = express.Router();
 require('dotenv').config();
 const UserController = require('../controllers/UserController');
 
-// register user
+// register users
 router.post('/users/register', UserController.registerUser);
-// user login
+// user logins
 router.post('/users/login', UserController.userLogin);
 // fetch all users
 router.get('/users', UserController.fetchUsers);
