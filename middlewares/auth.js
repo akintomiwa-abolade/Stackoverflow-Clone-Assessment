@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const { User, Question, Answer } = require('../database/models');
 
 require('dotenv').config();
-var secret = process.env.SECRET;
+let secret = process.env.SECRET;
 
 module.exports = {
   authenticate: function(req, res, next) {
