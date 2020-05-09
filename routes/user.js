@@ -89,7 +89,34 @@ router.post('/users/login', UserController.userLogin);
 router.get('/users', UserController.fetchUsers);
 // get specific user info
 router.get('/users/:userId', UserController.fetchSingleUser);
-// search for user
+/**
+ * @swagger
+ * /api/v1/user/search:
+ *   post:
+ *     tags:
+ *       - Users
+ *     name: Search for user
+ *     summary: Search user by name
+ *     produces:
+ *       - application/json
+ *     consumes:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         in: body
+ *         schema:
+ *           type: object
+ *           properties:
+ *             search:
+ *               type: string
+ *         required:
+ *           - search
+ *     responses:
+ *       '200':
+ *         description: search user result array
+ *       '500':
+ *         description: Internal server error
+ */
 router.post('/user/search', UserController.searchExistingUser);
 
 
