@@ -2,26 +2,27 @@ const mongoose = require('mongoose')
 /**
  * @swagger
  * definitions:
- * Answer:
- * type: object
- * properties:
- * _id:
- * type:objectid
- * title:
- * type:string
- * description:
- * type:string
- * upvotes:
- * type:objectid
- * downvotes:
- * type:objectid
- * totalVotes:
- * type:integer
- * createdAt:
- * type:date
- * required:
- * - title
- * - description
+ *   Answer:
+ *     type: object
+ *     properties:
+ *       title:
+ *         type: string
+ *       description:
+ *         type: string
+ *       upvotes:
+ *         type: array
+ *       downvotes:
+ *         type: string
+ *       totalVote:
+ *         type: integer
+ *       user:
+ *         type: integer
+ *       question:
+ *         type: integer
+ *       required:
+ *         - title
+ *         - description
+ *         - question
  */
 let answerSchema = new mongoose.Schema({
   title: {

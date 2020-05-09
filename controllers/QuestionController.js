@@ -52,7 +52,10 @@ class QuestionController {
 
             Question.create(newQuestion)
                 .then(question => {
-                    res.status(201).json(question);
+                    res.status(201).json({
+                        error:false,
+                        message:'Question asked successfully',
+                        data:question});
                 })
                 .catch(err => {
                     res.status(500).json({message: err.message});

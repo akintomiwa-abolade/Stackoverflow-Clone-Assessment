@@ -14,8 +14,41 @@ const QuestionController = require('../controllers/QuestionController');
 
 // view all question
 router.get('/questions', QuestionController.fetchQuestions);
-// ask question
-router.post('/questions', authenticate, QuestionController.askQuestion());
+/**
+ * @swagger
+ * /questions:
+ *   post:
+ *     tags:
+ *       - Users
+ *     name: AskQuestion
+ *     summary: User Ask Question
+ *     consumes:
+ *       - application/json
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: body
+ *         in: body
+ *         schema:
+ *           $ref: '#/definitions/User'
+ *           type: object
+ *           properties:
+ *             title:
+ *               type: string
+ *             description:
+ *               type: string
+ *             user:
+ *               type: integer
+ *             upvote:
+ *               type: ObjectId
+ *         required:
+ *           - title
+ *           - description
+ *     responses:
+ *       '201':
+ *         description: Question asked successfully
+ */
+router.post('/questions', authenticate, QuestionController.askQuestion);
 // view all user questions
 router.get('/questions/user', authenticate, QuestionController.fetchUsersQuestions);
 // get single question
