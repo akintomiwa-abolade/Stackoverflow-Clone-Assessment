@@ -211,7 +211,7 @@ class AnswerController {
     }
 
     /**
-     * Delete answer
+     * Delete an answer
      */
     static deleteAnswer(req, res){
         try{
