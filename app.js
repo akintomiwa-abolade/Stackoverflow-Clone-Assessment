@@ -56,6 +56,11 @@ const swaggerDefinition = {
 		title: 'Mini StackOverflow',
 		version: '1.0.0',
 		description: 'Endpoints to test StackOverflow clone business logic routes',
+		contact: {
+			name: "ABOLADE, Akintomiwa Mayowa",
+			url: "https://github.com/AceJBoss/Stackoverflow-Clone-Assessment",
+			email: "abolade.akintomiwa@gmail.com"
+		},
 	},
 	host: 'localhost:5000',
 	basePath: '/api/v1',
