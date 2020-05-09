@@ -16,7 +16,7 @@ const UserController = require('../controllers/UserController');
  *     tags:
  *       - Users
  *     name: Register
- *     summary: Register a new user
+ *     summary: User Sign up
  *     consumes:
  *       - application/json
  *     produces:
@@ -56,7 +56,7 @@ router.post('/users/register', UserController.registerUser);
  *     tags:
  *       - Users
  *     name: Login
- *     summary: Logs in a user
+ *     summary: User Sign in
  *     produces:
  *       - application/json
  *     consumes:
@@ -91,7 +91,7 @@ router.get('/users', UserController.fetchUsers);
 router.get('/users/:userId', UserController.fetchSingleUser);
 /**
  * @swagger
- * /api/v1/user/search:
+ * /user/search:
  *   post:
  *     tags:
  *       - Users

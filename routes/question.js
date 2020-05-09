@@ -137,8 +137,8 @@ router.post('/questions/subscribe', authenticate, QuestionController.userSubscri
  *   put:
  *     tags:
  *       - Questions
- *     name: List questions
- *     summary: List all questions asked
+ *     name: UpVote Question
+ *     summary: User choose to upvote a question
  *     security:
  *       - bearerAuth: []
  *     consumes:
@@ -167,8 +167,8 @@ router.put('/questions/:questionId/upvote', authenticate, QuestionController.upV
  *   put:
  *     tags:
  *       - Questions
- *     name: List questions
- *     summary: List all questions asked
+ *     name: DownVote questions
+ *     summary: User choose to downvote a question
  *     security:
  *       - bearerAuth: []
  *     consumes:
