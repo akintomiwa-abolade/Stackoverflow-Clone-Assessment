@@ -84,9 +84,9 @@ router.post('/users/register', UserController.registerUser);
  *       '403':
  *         description: Sorry no user with such Email found.
  */
-router.post('/users/login', UserController.userLogin);
+router.post('/users/login', UserController.loginUser);
 // fetch all users
-router.get('/users', UserController.fetchUsers);
+router.get('/users', UserController.fetchAllUsers);
 // get specific user info
 router.get('/users/:userId', UserController.fetchSingleUser);
 /**
@@ -117,7 +117,7 @@ router.get('/users/:userId', UserController.fetchSingleUser);
  *       '500':
  *         description: Internal server error
  */
-router.post('/user/search', UserController.searchExistingUser);
+router.post('/user/search', UserController.searchUserInfo);
 
 
 module.exports = router;

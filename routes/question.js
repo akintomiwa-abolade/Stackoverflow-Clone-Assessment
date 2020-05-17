@@ -30,7 +30,7 @@ const QuestionController = require('../controllers/QuestionController');
  *       500:
  *         description: Internal server error
  */
-router.get('/questions', QuestionController.fetchQuestions);
+router.get('/questions', QuestionController.fetchAllQuestions);
 /**
  * @swagger
  * /questions:
@@ -67,9 +67,9 @@ router.get('/questions', QuestionController.fetchQuestions);
  *       '500':
  *         description: Internal server error
  */
-router.post('/questions', authenticate, QuestionController.askQuestion);
+router.post('/questions', authenticate, QuestionController.createQuestion);
 // view all user questions
-router.get('/questions/user', authenticate, QuestionController.fetchUsersQuestions);
+router.get('/questions/user', authenticate, QuestionController.fetchUserQuestions);
 /**
  * @swagger
  * /questions/{questionId}:
@@ -130,7 +130,7 @@ router.get('/questions/:questionId', QuestionController.fetchSingleQuestion);
  *       '500':
  *         description: Internal server error
  */
-router.post('/questions/subscribe', authenticate, QuestionController.userSubscribeToQuestion)
+router.post('/questions/subscribe', authenticate, QuestionController.subscribeToQuestion)
 /**
  * @swagger
  * /questions/{questionId}/upvote:
@@ -160,7 +160,7 @@ router.post('/questions/subscribe', authenticate, QuestionController.userSubscri
  *       500:
  *         description: Internal server error
  */
-router.put('/questions/:questionId/upvote', authenticate, QuestionController.upVoteQuestion);
+router.put('/questions/:questionId/upvote', authenticate, QuestionController.upvoteQuestion);
 /**
  * @swagger
  * /questions/{questionId}/downvote:
@@ -190,7 +190,7 @@ router.put('/questions/:questionId/upvote', authenticate, QuestionController.upV
  *       500:
  *         description: Internal server error
  */
-router.put('/questions/:questionId/downvote', authenticate, QuestionController.downVoteQuestion);
+router.put('/questions/:questionId/downvote', authenticate, QuestionController.downvoteQuestion);
 // update question
 router.put('/questions/:questionId', authenticate, authorize, QuestionController.updateQuestion)
 // delete question

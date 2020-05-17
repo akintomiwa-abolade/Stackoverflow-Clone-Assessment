@@ -33,9 +33,9 @@ const AnswerController = require('../controllers/AnswerController');
  *       500:
  *         description: Internal server error
  */
-router.get('/answers/question/:questionId', AnswerController.fetchSpecificQuestionAnswer);
+router.get('/answers/question/:questionId', AnswerController.fetchQuestionAnswers);
 // get all question answered by loggedin user
-router.get('/answers/user', authenticate, AnswerController.fetchAnswersByUser);
+router.get('/answers/user', authenticate, AnswerController.fetchUserQuestionAnswered);
 /**
  * @swagger
  * /answers:
@@ -79,11 +79,11 @@ router.get('/answers/user', authenticate, AnswerController.fetchAnswersByUser);
  */
 router.post('/answers', authenticate, AnswerController.answerQuestion);
 // get specific answer
-router.get('/answers/:answerId', AnswerController.fetchAnswer);
+router.get('/answers/:answerId', AnswerController.fetchSingleAnswer);
 // upvote answer
-router.put('/answers/:answerId/upvote', authenticate, AnswerController.upVoteAnswer);
+router.put('/answers/:answerId/upvote', authenticate, AnswerController.upvoteAnswer);
 // downvote answer
-router.put('/answers/:answerId/downvote', authenticate, AnswerController.downVoteAnswer);
+router.put('/answers/:answerId/downvote', authenticate, AnswerController.downvoteAnswer);
 /**
  * @swagger
  * /answers/search:
@@ -112,7 +112,7 @@ router.put('/answers/:answerId/downvote', authenticate, AnswerController.downVot
  *       '500':
  *         description: Internal server error
  */
-router.post('/answers/search', AnswerController.searchAnswer);
+router.post('/answers/search', AnswerController.searchAnswers);
 // update answer
 router.put('/answers/:answerId', authenticate, authorize, AnswerController.updateAnswer);
 // delete answer
