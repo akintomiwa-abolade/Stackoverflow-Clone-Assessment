@@ -1,5 +1,9 @@
+
 const request = require('supertest');
 const app = require('../test_server');
+let rndNum = Math.floor(10000 + Math.random() * 900000);
+
+
 
 /*
   declare the token, answerId and questionId variable in a scope accessible
@@ -12,25 +16,25 @@ let answerId;
 beforeAll(async (done) => {
 
 	const res = await request(app)
-	.post('/users/register')
+	.post('/api/v1/users/register')
 	.send({
-		name: 'testuser2',
-		email: 'test2@email.com',
+		name: `testuser${rndNum}`,
+		email: `test${rndNum}@email.com`,
 		password:'123456',
 		fcm_token:'sss'
 	});
 
 	const tokenRes = await request(app)
-	.post('/users/login')
+	.post('/api/v1/users/login')
 	.send({ 
-		email: 'test2@email.com',
+		email: `test${rndNum}@email.com`,
 		password:'123456'
 	});
 
     token = tokenRes.body.token; // save the token!
 
     request(app)
-    .post('/questions')
+    .post('/api/v1/questions')
       .set('Authorization', `${token}`)
       .send({
 		"title": "How to log errors in test typescript",
@@ -45,14 +49,14 @@ beforeAll(async (done) => {
 describe('Answer Routes Test', function(){
 
 	it('should fetch all specific question answers by question id', async () => {
-	    const res = await request(app).get('/answers/question/'+questionId);
+	    const res = await request(app).get('/api/v1/answers/question/'+questionId);
 	    expect(res.statusCode).toEqual(200);
 	    expect(Array.isArray(res.body)).toBe(true);
 	});
 
 	
 	it('should fetch all answers made by loggedin user', async () => {
-	    const res = await request(app).get('/answers/user')
+	    const res = await request(app).get('/api/v1/answers/user')
 	    .set('Authorization', `${token}`);
 
 	    expect(res.statusCode).toEqual(200);
@@ -62,7 +66,7 @@ describe('Answer Routes Test', function(){
 
 	it('should answer question', async () => {
 	    const res = await request(app)
-	      .post('/answers')
+	      .post('/api/v1/answers')
 	      .set('Authorization', `${token}`)
 	      .send({
 		    "question": questionId,
@@ -77,27 +81,27 @@ describe('Answer Routes Test', function(){
 	});
 
 	it('should fetch single answer by id', async () => {
-	    const res = await request(app).get(`/answers/${answerId}`)
+	    const res = await request(app).get(`/api/v1/answers/${answerId}`)
 	    .set('Authorization', `${token}`);
 	    expect(res.statusCode).toEqual(200);
 	    expect(res.body).toHaveProperty('title');
 	});
 
 	it('should give an upvote to answer', async () => {
-	    const res = await request(app).put(`/answers/${answerId}/upvote`).set('Authorization', `${token}`);
+	    const res = await request(app).put(`/api/v1/answers/${answerId}/upvote`).set('Authorization', `${token}`);
 	    expect(res.statusCode).toEqual(200);
 	    expect(res.body).toHaveProperty('upvotes');
 	});
 
 	it('should give an downvote to answer', async () => {
-	    const res = await request(app).put(`/answers/${answerId}/downvote`).set('Authorization', `${token}`);
+	    const res = await request(app).put(`/api/v1/answers/${answerId}/downvote`).set('Authorization', `${token}`);
 	    expect(res.statusCode).toEqual(200);
 	    expect(res.body).toHaveProperty('downvotes');
 	});
 	
 	it('should fetch specific answer by title', async () => {
 	    const res = await request(app)
-	    .post('/answers/search')
+	    .post('/api/v1/answers/search')
 	    .send({
 	    	search:'How to log errors in javascript test 3'
 	    });
@@ -108,7 +112,7 @@ describe('Answer Routes Test', function(){
 
 	it('should update single answer', async () => {
 	    const res = await request(app)
-	    .put(`/answers/${answerId}`)
+	    .put(`/api/v1/answers/${answerId}`)
 	    .set('Authorization', `${token}`)
 	    .send({
 		    "question": questionId,
@@ -121,7 +125,7 @@ describe('Answer Routes Test', function(){
 	});
 
 	it('should delete answer', async () => {
-	    const res = await request(app).delete(`/answers/${answerId}`).set('Authorization', `${token}`);
+	    const res = await request(app).delete(`/api/v1/answers/${answerId}`).set('Authorization', `${token}`);
 	    expect(res.statusCode).toEqual(200);
 	});
 });
