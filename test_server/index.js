@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // connect to database
-mongoose.connect(process.env.MONGOLAB_URI, {useNewUrlParser:true,  useUnifiedTopology: true, useFindAndModify:false});
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false', {useNewUrlParser:true,  useUnifiedTopology: true, useFindAndModify:false});
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 
