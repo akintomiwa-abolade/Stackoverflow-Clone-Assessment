@@ -2,7 +2,6 @@ const cors = require('cors');
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const config = require('../database/config');
 const error = require('../middlewares/error');
 const expressValidator = require('express-validator');
 const http = require('http');
