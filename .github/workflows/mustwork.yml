@@ -23,7 +23,5 @@ jobs:
         node-version: '12.x'
     - name: Installation
       run: npm install
-    - name: Running App  
-      run: npm run dev
     - name: Test  
       run: npm test
